@@ -1,5 +1,7 @@
 import '../styles/globals.css'
 import Header from './Header'
+import { UilApple } from '@iconscout/react-unicons';
+
 export default function RootLayout({
   children,
 }: {
@@ -10,6 +12,7 @@ export default function RootLayout({
       <body>
         <Header/>
         {children}
+        <UilApple/>
       </body>
     </html>
   )
