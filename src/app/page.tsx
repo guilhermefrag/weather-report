@@ -1,9 +1,9 @@
-function Home() {
+
+export default function Home() {
   return (
-    <div className="text-red-600">
-      <h1>Hello World! Home</h1>
-    </div>
+    <main>
+      <div>
+      </div>
+    </main>
   )
 }
-
-export default Home
