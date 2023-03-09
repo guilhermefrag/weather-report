@@ -1,4 +1,4 @@
-import './globals.css'
+import './style/globals.css'
 import { UilApple } from '@iconscout/react-unicons';
 
 export const metadata = {
