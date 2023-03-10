@@ -5,7 +5,7 @@ import React from "react";
 
 //Types
 interface Region {
-  stade: string;
+  state: string;
   city: string;
 }
 
@@ -23,19 +23,27 @@ export default function SearchBar() : JSX.Element {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
 
+  const handleButtonClick = (): Region => {
+    const region: Region = {
+      state: selectedOption,
+      city: inputValue
+    };
+    console.log(region.city)
+    console.log(region.state);
+    return region;
+  };
+
 	useEffect(() => {
 		setRegionValues().then((data) => {
 			setOptions(data);
 		});
 	}, []);
 
-  const handleButtonClick = (): Region => {
-    const region: Region = {
-      stade: selectedOption,
-      city: inputValue
-    };
-    return region;
-  };
+  useEffect(() => {
+    handleButtonClick()
+  });
+
+  
 
 	return (
 		<div className="relative">
@@ -46,7 +54,7 @@ export default function SearchBar() : JSX.Element {
       >
         <option key="default" value="default" defaultChecked>XX</option>
         {options.map((stateData: []) => (
-          <option key={stateData["name"]} value={stateData["name"]}>
+          <option key={stateData["geonameId"]} value={stateData["geonameId"]}>
             {stateData["adminCodes1"]["ISO3166_2"]}
           </option>
         ))}
