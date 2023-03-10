@@ -1,5 +1,5 @@
 import "./style/globals.css";
-import Head from 'next/head';
+import Head from "next/head";
 import { UilSun, UilMoon } from "@iconscout/react-unicons";
 import SearchBar from "./components/SearchBar";
 
@@ -15,19 +15,36 @@ export default function RootLayout({
 }) {
 	return (
 		<html className="font-hanken">
-      <body>
-        <div className="p-4 md:flex md:flex-col items-center justify-center bg-blue-900  h-full">
-          <div className="flex-shrink-0 mb-4 flex flex-wrap justify-center">
-            <UilSun size="60" className="text-yellow-500" />
-            <UilMoon size="60" className="text-gray-500" />
-          </div>
-          <h1 className="text-5xl text-white font-bold mb-4 text-center">WEATHER REPORT</h1>
-          <div>
-            <SearchBar />
-          </div>
-        </div>
-        <div>{children}</div>
-      </body>
-    </html>
+			<body>
+				<div className="p-4 md:flex md:flex-col items-center justify-center bg-blue-900  h-full">
+					<div className="flex-shrink-0 mb-4 flex flex-wrap justify-center">
+						<UilSun size="60" className="text-yellow-500" />
+						<UilMoon size="60" className="text-gray-500" />
+					</div>
+					<h1 className="text-5xl text-white font-bold mb-4 text-center">
+						WEATHER REPORT
+					</h1>
+					<div>
+						<SearchBar />
+					</div>
+				</div>
+				<div>{children}</div>
+				<div>
+					<h1>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem
+						molestiae voluptates autem inventore, commodi facilis delectus qui
+						fugiat iure aspernatur adipisci iusto nam iste ipsum aut quia
+						consectetur! Ullam, officia! Reiciendis laudantium, magni maiores
+						iusto saepe, facere nemo sit quia molestias deserunt consequatur
+						nihil ducimus, molestiae in id unde. Itaque quisquam rerum beatae
+						aliquam provident quidem et velit hic culpa? Quia reprehenderit
+						asperiores accusantium dignissimos voluptatem amet tenetur
+						temporibus voluptatum iste, cum excepturi consequuntur in ea, autem
+						quas dicta officiis ad ipsam debitis tempora obcaecati! Possimus
+						recusandae repellendus rerum aliquid.
+					</h1>
+				</div>
+			</body>
+		</html>
 	);
 }
