@@ -79,6 +79,7 @@ export default function SearchBar(): JSX.Element {
           onKeyPress={(event) => {
             if (event.key === "Enter") {
               handleOptionClick(cityData["name"]);
+              setQuery([]);
             }
           }}
           className="px-2 py-1 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
