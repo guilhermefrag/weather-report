@@ -15,17 +15,16 @@ interface Region {
 
 async function setRegionValues(): Promise<[]> {
 	const res = await fetch(
-		"http://api.geonames.org/childrenJSON?geonameId=3469034&lang=pt_br&username=guilhermefrag",
+		"/api/states/3469034/",
 	).then((res) => res.json());
 	return await res.geonames;
 }
 
 async function getFilteredCities(region: Region): Promise<[]> {
-  //TODO: Pegar o endpoint de /api e pegar as cidades filtradas
 	const res = await fetch(
-		`http://api.geonames.org/childrenJSON?geonameId=${region.state}&name_startsWith=${region.city}&lang=pt_br&username=guilhermefrag&maxRows=10&population=>0`,
+		`/api/cities/${region.state}/${region.city}/`,
 	).then((res) => res.json());
-	return await res.geonames;
+	return await res;
 }
 
 //Component
@@ -36,11 +35,11 @@ export default function SearchBar(): JSX.Element {
 	const [inputValue, setInputValue] = useState<string>("");
 
 	const handleButtonClick = useCallback(() => {
+    
 		const region: Region = {
 			state: selectedOption,
 			city: inputValue,
 		};
-    console.log(region);
 		setQuery([]);
 		return region;
 	}, [inputValue]);
@@ -57,15 +56,17 @@ export default function SearchBar(): JSX.Element {
 
 	useEffect(() => {
 		const region: Region = handleButtonClick();
+
 		if (region.city !== "") {
 			getFilteredCities(region).then((data) => {
-				setQuery(data);
+        setQuery(data);
+        
 			});
 		} else {
 			setQuery([]);
 		}
 	}, [handleButtonClick, inputValue]);
-
+  
 	return (
 		<div className="relative">
 			<select

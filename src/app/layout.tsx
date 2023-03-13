@@ -2,6 +2,8 @@ import "./style/globals.css";
 import Head from "next/head";
 import { UilSun, UilMoon } from "@iconscout/react-unicons";
 import SearchBar from "./components/SearchBar";
+import Report from "./components/Report";
+import NextDaysReport from "./components/NextDaysReport";
 
 export const metadata = {
 	title: "Weather Report",
@@ -24,27 +26,25 @@ export default function RootLayout({
 					<h1 className="text-5xl text-white font-bold mb-4 text-center">
 						WEATHER REPORT
 					</h1>
-					<div>
+					<header>
 						<SearchBar />
-					</div>
+					</header>
 				</div>
 				<div>{children}</div>
-				<div>
-					<h1>
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem
-						molestiae voluptates autem inventore, commodi facilis delectus qui
-						fugiat iure aspernatur adipisci iusto nam iste ipsum aut quia
-						consectetur! Ullam, officia! Reiciendis laudantium, magni maiores
-						iusto saepe, facere nemo sit quia molestias deserunt consequatur
-						nihil ducimus, molestiae in id unde. Itaque quisquam rerum beatae
-						aliquam provident quidem et velit hic culpa? Quia reprehenderit
-						asperiores accusantium dignissimos voluptatem amet tenetur
-						temporibus voluptatum iste, cum excepturi consequuntur in ea, autem
-						quas dicta officiis ad ipsam debitis tempora obcaecati! Possimus
-						recusandae repellendus rerum aliquid.
-					</h1>
+				<div className="min-h-screen bg-[url('https://i.pinimg.com/564x/1c/d5/87/1cd587f57994bd98a31a73e7a15e00f1.jpg')] bg-no-repeat bg-cover">
+					<div>
+						<Report />
+					</div>
+					<div>
+						<NextDaysReport />
+					</div>
 				</div>
 			</body>
+			<footer>
+				<div className="flex justify-center items-center h-16 bg-black text-white">
+					<p>Created by @guilhermefrag and @chatgpt</p>
+				</div>
+			</footer>
 		</html>
 	);
 }
