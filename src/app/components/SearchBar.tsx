@@ -9,13 +9,6 @@ interface Region {
 }
 
 //Functions
-async function setRegionValues(): Promise<[]> {
-	const res = await fetch(
-		"http://api.geonames.org/searchJSON?country=BR&featureCode=ADM1&lang=pt&username=guilhermefrag",
-	).then((res) => res.json());
-	return await res.geonames;
-}
-
 async function getFilteredCities(region: Region): Promise<[]> {
 	const res = await fetch(
 		`http://api.geonames.org/searchJSON?name_startsWith=${region.city}&lang=pt_br&username=guilhermefrag&maxRows=10&population=>0`,
@@ -33,7 +26,6 @@ export default function SearchBar(): JSX.Element {
 		const region: Region = {
 			city: inputValue,
 		};
-		console.log(region.city);
     setQuery([]);
 		return region;
 	}, [inputValue]);
@@ -55,39 +47,41 @@ export default function SearchBar(): JSX.Element {
 
 	return (
 		<div className="relative">
-			<input
-				type="text"
-				placeholder="Search for a city..."
-				className="md:h-10 md:w-96 md:pl-2 border-black border-2 rounded-md h-9 w-[100%] pl-2"
-				value={inputValue}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-					setInputValue(e.target.value)
-				}
-			/>
-			<button
-				type="submit"
-				className="md:right-2 md:pt-2 md:mb-[10px] absolute inset-y-0 right-2 pt-[0.1rem]"
-				onClick={handleButtonClick}
-			>
-				<UilSearchAlt />
-			</button>
-			<ul className="absolute top-full left-0 mt-1 w-full bg-white border-black border-2 rounded-md shadow-md">
-				{query.map((cityData: []) => (
-					<li
-          key={cityData["geonameId"]}
-          onClick={() => handleOptionClick(cityData["name"])}
-          onKeyPress={(event) => {
-            if (event.key === "Enter") {
-              handleOptionClick(cityData["name"]);
-              setQuery([]);
-            }
-          }}
-          className="px-2 py-1 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
-        >
-          {cityData["name"]} - {cityData["countryCode"]}
-        </li>
-				))}
-			</ul>
-		</div>
+    <input
+      type="text"
+      placeholder="Search for a city..."
+      className="md:h-10 md:w-96 md:pl-2 border-black border-2 rounded-md h-9 w-[100%] pl-2"
+      value={inputValue}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setInputValue(e.target.value)
+      }
+    />
+    <button
+      type="submit"
+      className="md:right-2 md:pt-2 md:mb-[10px] absolute inset-y-0 right-2 pt-[0.1rem]"
+      onClick={handleButtonClick}
+    >
+      <UilSearchAlt />
+    </button>
+    {query.length > 0 && (
+      <ul className="absolute top-full left-0 mt-1 w-full bg-white border-black border-2 rounded-md shadow-md">
+        {query.map((cityData: []) => (
+          <li
+            key={cityData["geonameId"]}
+            onClick={() => handleOptionClick(cityData["name"])}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                handleOptionClick(cityData["name"]);
+                setQuery([]);
+              }
+            }}
+            className="px-2 py-1 cursor-pointer hover:bg-gray-100 focus:bg-gray-100"
+          >
+            {cityData["name"]} - {cityData["countryCode"]}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
 	);
 }
