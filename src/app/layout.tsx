@@ -1,9 +1,5 @@
 import "./style/globals.css";
-import Head from "next/head";
-import { UilSun, UilMoon } from "@iconscout/react-unicons";
-import SearchBar from "./components/SearchBar";
-import Report from "./components/Report";
-import NextDaysReport from "./components/NextDaysReport";
+import Main from "./components/Main";
 
 export const metadata = {
 	title: "Weather Report",
@@ -18,31 +14,12 @@ export default function RootLayout({
 	return (
 		<html className="font-hanken">
 			<body>
-				<div className="p-4 md:flex md:flex-col items-center justify-center bg-blue-900  h-full">
-					<div className="flex-shrink-0 mb-4 flex flex-wrap justify-center">
-						<UilSun size="60" className="text-yellow-500" />
-						<UilMoon size="60" className="text-gray-500" />
-					</div>
-					<h1 className="text-5xl text-white font-bold mb-4 text-center">
-						WEATHER REPORT
-					</h1>
-					<header>
-						<SearchBar />
-					</header>
-				</div>
+				<Main />
 				<div>{children}</div>
-				<div className="min-h-screen bg-[url('https://i.pinimg.com/564x/1c/d5/87/1cd587f57994bd98a31a73e7a15e00f1.jpg')] bg-no-repeat bg-cover">
-					<div>
-						<Report />
-					</div>
-					<div>
-						<NextDaysReport />
-					</div>
-				</div>
 			</body>
 			<footer>
 				<div className="flex justify-center items-center h-16 bg-black text-white">
-					<p>Created by @guilhermefrag and @chatgpt</p>
+					<p>Created by @guilhermefrag</p>
 				</div>
 			</footer>
 		</html>

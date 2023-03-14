@@ -27,14 +27,22 @@ async function getFilteredCities(region: Region): Promise<[]> {
 }
 
 //Component
-export default function SearchBar(): JSX.Element {
+export default function SearchBar({ setSearchValue }): JSX.Element {
+
 	const [options, setOptions] = useState<[]>([]);
 	const [query, setQuery] = useState<[]>([]);
 	const [selectedOption, setSelectedOption] = useState<string>("");
 	const [inputValue, setInputValue] = useState<string>("");
+  const [cityData, setCityData] = useState<[]>([]);
+  
+	const handleButtonClick = () => {
+    const latLongValues = cityData.map(city => [city["lat"], city["lng"]]);
+    setSearchValue(latLongValues);
+    setQuery([]);
+    return latLongValues;
+  };
 
-	const handleButtonClick = useCallback(() => {
-    
+  const handleCityInput = useCallback(() => {
 		const region: Region = {
 			state: selectedOption,
 			city: inputValue,
@@ -54,17 +62,18 @@ export default function SearchBar(): JSX.Element {
 	}, []);
 
 	useEffect(() => {
-		const region: Region = handleButtonClick();
+		const region: Region = handleCityInput();
 
 		if (region.city !== "") {
 			getFilteredCities(region).then((data) => {
         setQuery(data);
-        
+        setCityData(data);
 			});
 		} else {
 			setQuery([]);
 		}
-	}, [handleButtonClick, inputValue]);
+    
+	}, [handleCityInput, inputValue]);
   
 	return (
 		<div className="relative">
