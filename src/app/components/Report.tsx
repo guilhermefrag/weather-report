@@ -1,6 +1,5 @@
 "use client";
 
-
 export default function Report() {
   return (
     <div className="flex pt-10 justify-center pl-5 pr-5">

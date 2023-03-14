@@ -1,7 +1,6 @@
 "use client";
 import { UilSearchAlt } from "@iconscout/react-unicons";
 import { useState, useEffect, useCallback } from "react";
-import React from "react";
 
 //Types
 interface Region {
