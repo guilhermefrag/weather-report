@@ -17,11 +17,11 @@ export default function RootLayout({
 				<Main />
 				<div>{children}</div>
 			</body>
-			<footer>
+			{/* <footer>
 				<div className="flex justify-center items-center h-16 bg-black text-white">
 					<p>Created by @guilhermefrag</p>
 				</div>
-			</footer>
+			</footer> */}
 		</html>
 	);
 }
