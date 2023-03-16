@@ -22,7 +22,7 @@ export default function Main() {
 					<SearchBar setSearchValue={setSearchValue}/>
 				</header>
 			</div>
-			<div className="min-h-screen bg-[url('https://wallpaperaccess.com/full/896979.jpg')] bg-no-repeat bg-cover">
+			<div className="min-h-screen bg-[url('https://images3.alphacoders.com/743/743994.jpg')] bg-no-repeat bg-cover">
 				<div>
 					<Report searchValue={searchValue}/>
 				</div>

@@ -22,7 +22,6 @@ export default function NextDaysReport({ searchValue }): JSX.Element {
 			fetch(`/api/next-days-weather/${searchValue[0][0]}/${searchValue[0][1]}`)
 				.then((res) => res.json())
 				.then((data) => {
-					console.log(data);
 					setNextDaysWeather(data.daily);
 				});
 		} catch (error) {
@@ -36,7 +35,7 @@ export default function NextDaysReport({ searchValue }): JSX.Element {
 
 	return (
 		<div className="md:pt-[8rem] pt-[2rem] pb-4 pl-5 pr-5">
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 				{nextDaysWeather.map((day) => (
 					<div className="bg-white rounded-lg p-4" key={day.dt}>
 						<h2 className="text-lg font-medium mb-2">

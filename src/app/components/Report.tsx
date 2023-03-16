@@ -93,7 +93,7 @@ export default function Report({ searchValue }) {
             </div>
           </>
         ) : (
-          <p className="text-center">Loading...</p>
+          <p className="text-center">Waiting for input...</p>
         )}
       </div>
     </div>

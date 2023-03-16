@@ -1,5 +1,6 @@
 import "./style/globals.css";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 export const metadata = {
 	title: "Weather Report",
@@ -16,12 +17,8 @@ export default function RootLayout({
 			<body>
 				<Main />
 				<div>{children}</div>
+        <Footer />
 			</body>
-			{/* <footer>
-				<div className="flex justify-center items-center h-16 bg-black text-white">
-					<p>Created by @guilhermefrag</p>
-				</div>
-			</footer> */}
 		</html>
 	);
 }
