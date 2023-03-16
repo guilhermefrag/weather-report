@@ -37,8 +37,7 @@ async function getFilteredCities(region: Region): Promise<[]> {
 //Component
 export default function SearchBar({ setSearchValue }): JSX.Element {
 	const [countryOptions, setCountryOptions] = useState<[]>([]);
-	const [selectedCountryOption, setSelectedCountryOption] =
-		useState<string>("");
+	const [selectedCountryOption, setSelectedCountryOption] = useState<string>("");
 	const [options, setOptions] = useState<[]>([]);
 	const [query, setQuery] = useState<[]>([]);
 	const [selectedOption, setSelectedOption] = useState<string>("");
@@ -52,17 +51,15 @@ export default function SearchBar({ setSearchValue }): JSX.Element {
 		return latLongValues;
 	};
 
-	const handleCountryInput = useCallback(async () => {
-		if (selectedCountryOption === "default") {
-			setOptions([]);
-			return;
-		}
+	const handleCountryInput = useCallback(async (selectedCountryOption) => {
+		
 		const country: Country = {
 			geonameId: selectedCountryOption,
 		};
+    console.log(country.geonameId)
 		const states = await setRegionValues(country);
 		setOptions(states);
-	}, [selectedCountryOption]);
+	}, []);
 
 	const handleCityInput = useCallback(() => {
 		const region: Region = {
@@ -102,7 +99,7 @@ export default function SearchBar({ setSearchValue }): JSX.Element {
 				className="md:h-10 md:w-[4rem] border-black border-2 w-[30%] rounded-md mb-[10px]"
 				onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
 					setSelectedCountryOption(e.target.value);
-					handleCountryInput();
+					handleCountryInput(e.target.value);
 				}}
 			>
 				<option key="default" value="default" defaultChecked>
@@ -128,7 +125,8 @@ export default function SearchBar({ setSearchValue }): JSX.Element {
 				</option>
 				{options.map((stateData: []) => (
 					<option key={stateData["geonameId"]} value={stateData["geonameId"]}>
-						{stateData["adminCodes1"]["ISO3166_2"]}
+						{
+							stateData["toponymName"]}
 					</option>
 				))}
 			</select>
