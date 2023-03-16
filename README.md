@@ -1,5 +1,5 @@
-npm i
-npm run dev
+- npm i
+- npm run dev
 
 Create a .env file in root directory with:
   - GEONAMES_USERNAME
