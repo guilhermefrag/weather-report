@@ -27,7 +27,7 @@ export default function Main() {
 					<Report searchValue={searchValue}/>
 				</div>
 				<div>
-					<NextDaysReport />
+					<NextDaysReport searchValue={searchValue}/>
 				</div>
 			</div>
 		</div>

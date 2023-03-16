@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 
 type WeatherData = {
@@ -24,7 +25,6 @@ export default function Report({ searchValue }) {
 			fetch(`/api/weather/${searchValue[0][0]}/${searchValue[0][1]}`)
 				.then((res) => res.json())
 				.then((data) => {
-					console.log(data);
 					const weatherData: WeatherData = {
 						description: data.current.weather[0].description,
 						temperature: {

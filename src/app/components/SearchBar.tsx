@@ -3,7 +3,7 @@ import { UilSearchAlt } from "@iconscout/react-unicons";
 import { useState, useEffect, useCallback } from "react";
 
 //Types
-interface Region {
+type Region = {
 	state: string;
 	city: string;
 }
