@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
+//Types
 type WeatherData = {
 	description: string;
 	temperature: {
@@ -17,6 +18,7 @@ type WeatherData = {
 	icon: string;
 };
 
+//Components
 export default function Report({ searchValue }) {
 	const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 

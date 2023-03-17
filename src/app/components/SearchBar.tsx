@@ -13,8 +13,6 @@ type Region = {
 };
 
 //Functions
-
-//TODO: Já Fazer o filtro por pais
 async function setCountryValues(): Promise<[]> {
 	const res = await fetch("/api/countries/").then((res) => res.json());
 	return await res.geonames;
